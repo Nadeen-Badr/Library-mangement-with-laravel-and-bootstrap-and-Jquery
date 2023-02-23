@@ -33,25 +33,27 @@
 <hr>
 
 <div id="allBooks">
-@foreach($books as $book)
+  <div class="card-deck">
+   @foreach($books as $book)
+   <div class="card border-dark mb-3" style="width: 18rem;">
+     <img class="card-img-top" src="{{asset('uploads/books/' . $book->img)}}" alt="book image ">
+     <div class="card-body">
+       <h5 class="card-title">{{ $book->title }}</h5>
+       <p class="card-text">{{ $book->desc }}</p>
+       @auth
+         @if(Auth::user()->is_admin == 1)
+          <a class="btn btn-danger" href="{{ route('books.delete', $book->id) }}">Delete</a>
+         @endif
+        <a class="btn btn-warning" href="{{ route('books.edit', $book->id) }}">Update</a>
+       @endauth
+     <a class="btn btn-success" href="{{ route('books.show', $book->id) }}">Show</a>
+     </div>
+   </div>
+   @endforeach
+ </div>
 
 
-  <h3>{{ $book->title }}</h3>
 
-
-<p>{{ $book->desc }}</p>
-
- @auth
-  @if(Auth::user()->is_admin == 1)
-    <a class="btn btn-danger" href="{{ route('books.delete', $book->id) }}">Delete</a>
-
-
-
-  @endif
-  <a class="btn btn-warning" href="{{ route('books.edit', $book->id) }}">Update</a>
-@endauth
-<a class="btn btn-success" href="{{ route('books.show', $book->id) }}">Show</a>
-@endforeach
 </div>
 
 {{-- {{ $books->render() }} --}}
