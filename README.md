@@ -15,4 +15,9 @@
 -Books can have images 
 
 -login,Register and logout options
-  this project is mainly foucsed on back-end with bootstrap styling
+  
+  
+  
+ 
+ 
+ this project is mainly foucsed on back-end with bootstrap styling
